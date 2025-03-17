@@ -17,19 +17,19 @@ Including another URLconf
 from django.urls import path, re_path, include
 from tractor import views
 
-product_patterns = [
-    path("", views.products),
-    path("new", views.new),
-    path("top", views.top),
-    path("comments", views.comments),
-    path("questions", views.questions),
-]
+# product_patterns = [
+#     path("", views.products),
+#     path("new", views.new),
+#     path("top", views.top),
+#     path("comments", views.comments),
+#     path("questions", views.questions),
+# ]
 
 urlpatterns = [
-    path('', views.index),
-    path('about', views.about, kwargs={"name": "Konstantin", "age": 19}),
-    re_path(r"^user/(?P<name>\D+)/(?P<age>\d+)", views.user),
-    re_path(r"^user/(?P<name>\D+)", views.user),
-    re_path(r"^user", views.user),
-    path("products/<int:id>/", include(product_patterns)),
+    # path('', views.index),
+    # path('about', views.about, kwargs={"name": "Konstantin", "age": 19}),
+    # path("user/", views.user),
+    # path("products/<int:id>/", include(product_patterns)),
+    path("index/<int:id>", views.index),
+    path("access/<int:age>", views.access),
 ]
