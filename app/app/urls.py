@@ -14,10 +14,22 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.urls import path
+from django.urls import path, re_path, include
 from tractor import views
+
+product_patterns = [
+    path("", views.products),
+    path("new", views.new),
+    path("top", views.top),
+    path("comments", views.comments),
+    path("questions", views.questions),
+]
 
 urlpatterns = [
     path('', views.index),
     path('about', views.about, kwargs={"name": "Konstantin", "age": 19}),
+    re_path(r"^user/(?P<name>\D+)/(?P<age>\d+)", views.user),
+    re_path(r"^user/(?P<name>\D+)", views.user),
+    re_path(r"^user", views.user),
+    path("products/<int:id>/", include(product_patterns)),
 ]
