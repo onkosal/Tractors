@@ -26,10 +26,12 @@ from tractor import views
 # ]
 
 urlpatterns = [
-    # path('', views.index),
+    path('', views.index),
+    path("about/", views.about),
+    path("contact/", views.contact),
     # path('about', views.about, kwargs={"name": "Konstantin", "age": 19}),
     # path("user/", views.user),
     # path("products/<int:id>/", include(product_patterns)),
-    path("index/<int:id>", views.index),
-    path("access/<int:age>", views.access),
+    path("set", views.set),
+    path("get", views.get),
 ]
